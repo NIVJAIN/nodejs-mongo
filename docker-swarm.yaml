@@ -19,7 +19,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-        MONGO_CONTAINER_NAME: "stackdemo_mongodb"
+        MONGO_CONTAINER_NAME: "mongodb" #for dockerswarm use mongodb and it will work for docker-compose
         MONGO_INITDB_ROOT_USERNAME: "jain"
         MONGO_INITDB_ROOT_PASSWORD: "pAssw0rd"
         MONGO_INITDB_DATABASE : "pod"

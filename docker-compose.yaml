@@ -1,13 +1,16 @@
+# docker-compose -f legacy-elasticsearch.yml up
 version: "3.7"
 services:
   app:
     container_name: node-mongo
+    image: 127.0.0.1:3000/node-mongo
     restart: always
     build: .
     ports:
       - "3000:3000"
     environment:
-        MONGO_CONTAINER_NAME: "mongojain"
+        # MONGO_CONTAINER_NAME: "mongojain"
+        MONGO_CONTAINER_NAME: "mongodb"
         MONGO_INITDB_ROOT_USERNAME: "jain"
         MONGO_INITDB_ROOT_PASSWORD: "pAssw0rd"
         MONGO_INITDB_DATABASE : "pod"
@@ -24,12 +27,8 @@ services:
     container_name: mongojain
     restart: always
     environment:
-        MONGO_CONTAINER_NAME: "mongojain"
         MONGO_INITDB_ROOT_USERNAME: "jain"
         MONGO_INITDB_ROOT_PASSWORD: "pAssw0rd" 
-        # MONGO_INITDB_DATABASE: "pod"
-        # MONGO_INITDB_ROOT_USERNAME: "root"
-        # MONGO_INITDB_ROOT_PASSWORD: "root"
     ports:
         - 27017:27017
     volumes:
@@ -41,6 +40,8 @@ services:
 networks:
   app-network:
     driver: bridge
+    # external:
+    #   name: bridge
 
 # volumes:
 #   data:
