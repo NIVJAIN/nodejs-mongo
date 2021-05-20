@@ -1,0 +1,47 @@
+version: "2"
+services:
+  app:
+    container_name: node-mongo
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+        MONGO_CONTAINER_NAME: "mongojain"
+        MONGO_INITDB_ROOT_USERNAME: "jain"
+        MONGO_INITDB_ROOT_PASSWORD: "pAssw0rd"
+        MONGO_INITDB_DATABASE : "pod"
+    links:
+      - mongodb
+    # command: mongo --host mongo --eval  "db.getSiblingDB('dashboard').createUser({user:'dbuser', pwd:'dbpass', roles:[{role:'readWrite',db:'dashboard'}]});"
+    # command: ./wait-for.sh mongojain:27017 -- /usr/src/app//node_modules/.bin/nodemon server.js
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+  mongodb:
+    image: mongo:latest
+    container_name: mongojain
+    restart: always
+    environment:
+        MONGO_CONTAINER_NAME: "mongojain"
+        MONGO_INITDB_ROOT_USERNAME: "root"
+        MONGO_INITDB_ROOT_PASSWORD: "root" 
+        # MONGO_INITDB_DATABASE: "pod"
+        # MONGO_INITDB_ROOT_USERNAME: "root"
+        # MONGO_INITDB_ROOT_PASSWORD: "root"
+    ports:
+        - 27017:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# volumes:
+#   data:
+#   node_modules:
