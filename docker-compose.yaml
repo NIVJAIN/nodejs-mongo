@@ -1,4 +1,4 @@
-version: "2"
+version: "3.7"
 services:
   app:
     container_name: node-mongo
@@ -25,8 +25,8 @@ services:
     restart: always
     environment:
         MONGO_CONTAINER_NAME: "mongojain"
-        MONGO_INITDB_ROOT_USERNAME: "root"
-        MONGO_INITDB_ROOT_PASSWORD: "root" 
+        MONGO_INITDB_ROOT_USERNAME: "jain"
+        MONGO_INITDB_ROOT_PASSWORD: "pAssw0rd" 
         # MONGO_INITDB_DATABASE: "pod"
         # MONGO_INITDB_ROOT_USERNAME: "root"
         # MONGO_INITDB_ROOT_PASSWORD: "root"

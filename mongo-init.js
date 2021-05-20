@@ -1,4 +1,4 @@
-db.auth('root', 'root')
+db.auth('jain', 'pAssw0rd')
 db = db.getSiblingDB('pod')
 db.createUser({
   user: 'jain',
