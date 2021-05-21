@@ -8,7 +8,11 @@ GET {{baseUrl}}/health
 ###
 GET {{baseUrl}}/ping
 
+###
+GET {{baseUrl}}/service-b
+###
 
+GET {{baseUrl}}/service-c
 
 
 

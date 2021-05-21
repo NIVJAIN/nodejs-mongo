@@ -13,12 +13,12 @@ Content-Type: application/json
 
 {
     "bananas" : 2,
-    "email" : "zsripal.jain@gmail.com",
+    "email" : "somasundar@gmail.com",
     "drink" : "Coffee"
 }
 ###
 #  bombardier -c 125 -n 10000000 http://hello-world.info/breakfast/zsripal.jain@gmail.com
-GET {{baseUrl}}/breakfast/zsripal.jain@gmail.com/
+GET {{baseUrl}}/breakfast/somasundar@gmail.com/
 ###
 GET http://hello-world.info/breakfast/zsripal.jain@gmail.com
 
