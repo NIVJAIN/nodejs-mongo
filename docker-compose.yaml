@@ -37,11 +37,11 @@ services:
     networks:
       - app-network
 
+
 networks:
   app-network:
-    driver: bridge
-    # external:
-    #   name: bridge
+    driver: overlay
+
 
 # volumes:
 #   data:
