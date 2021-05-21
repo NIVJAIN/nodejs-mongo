@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const fs = require('fs');
+const axios = require('axios');
 /* ============================================================================================================================
 Different db settings based on container or non container
 const db = 'mongodb://root:$iloveblockchain@127.0.0.1:27017/pod?authSource=admin'
@@ -131,6 +132,30 @@ app.get("/breakfast/:email", async (req,res,next)=>{
         })
     })
   }
+
+
+  app.get("/service-a",(req,res,next)=>{
+    const got = require('got');
+
+    axios.get('http://service-a/health')
+    .then(response => {
+        console.log(response.data.url);
+        console.log(response.data.explanation);
+        res.status(200).json({
+            from: "node-app calling service-a health endpoint",
+            message: response.data,
+            anothermessage: response.data.explanation
+        })
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({
+            error: error,
+        })
+    });  
+   
+  })
+
 
   app.listen(PORT, function(){
       console.log(`magik happens on http://localhost:${PORT}`)

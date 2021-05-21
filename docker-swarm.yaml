@@ -27,6 +27,33 @@ services:
       - mongodb
     depends_on:
       - mongodb
+    networks:
+      - node-demo
+# ########################### # ##########################
+#                         SERVICES                       #
+# ########################## # ##########################
+  service-a:
+    image: nivjain/node-srv-a:1.4.0
+    networks:
+      - node-demo
+    ports:
+      - 5000:3000
+  service-b:
+    image: nivjain/node-srv-b:1.4.0
+    networks:
+      - node-demo
+    ports:
+      - 6000:3000
+  service-c:
+    image: nivjain/node-srv-c:1.4.0
+    networks:
+      - node-demo
+    ports:
+      - 7000:3000
+
+# ########################### # ##########################
+#                         DATABASE                      #
+# ########################## # ##########################
   mongodb:
     image: mongo:latest
     container_name: mongojain
@@ -40,4 +67,11 @@ services:
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - ./data:/data/db
+    networks:
+      - node-demo
+
+    
+networks:
+  node-demo:
+    external: true
 

@@ -21,3 +21,6 @@ Content-Type: application/json
 GET {{baseUrl}}/breakfast/zsripal.jain@gmail.com/
 ###
 GET http://hello-world.info/breakfast/zsripal.jain@gmail.com
+
+###
+GET {{baseUrl}}/service-a

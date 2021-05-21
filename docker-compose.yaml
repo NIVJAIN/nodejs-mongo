@@ -22,6 +22,34 @@ services:
       - mongodb
     networks:
       - app-network
+
+
+# ########################### # ##########################
+#                         SERVICES                       #
+# ########################## # ##########################
+  service-a:
+      # image: nivjain/node-srv-a:1.4.0
+      build: ./services/service-a
+      networks:
+        - app-network
+      ports:
+        - 5000:3000
+  service-b:
+    # image: nivjain/node-srv-b:1.4.0
+    build: ./services/service-b
+    networks:
+      - app-network
+    # ports:
+    #   - 6000:3000
+  service-c:
+    # image: nivjain/node-srv-c:1.4.0
+    build: ./services/service-c
+    networks:
+      - app-network
+    # ports:
+    #   - 7000:3000
+
+
   mongodb:
     image: mongo:latest
     container_name: mongojain
