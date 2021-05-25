@@ -1,4 +1,7 @@
-kubectl exec "$(kubectl get pod -l app=service-a)" -c ratings -- curl -sS service-a:80 
+kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
+
+
+curl -s "http://${GATEWAY_URL}/productpage" | grep -o "<title>.*</title>"
 
 # output
 # <title>Simple Bookstore App</title>
